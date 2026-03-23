@@ -7,6 +7,10 @@ const app = express()
 dataBase()
 app.use(express.json())
 
+// app.get("/api/todo",(req,res)=>{
+//     res.send("hello")
+// })
+
 app.use("/api/todo", require("./routers/router"))
 
 
