@@ -6,8 +6,8 @@ const Todo = require("../models/user")
 exports.createTodo = async (req,res)=>{
 try {
     const todo = new Todo({
-        title: "4",
-        task : "this is the content of todo 4"
+        title:req.body.title,
+        task:req.body.task
     })
 
     await todo.save()

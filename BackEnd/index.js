@@ -1,17 +1,20 @@
 require('dotenv').config()
 const express = require("express")
 const dataBase = require("./config/mongoDB")
+const cors = require("cors")
 // const jwt = require("jsonwebtoken")
 const app = express()
 
 dataBase()
 app.use(express.json())
+app.use(cors())
 
 // app.get("/api/todo",(req,res)=>{
 //     res.send("hello")
 // })
 
 app.use("/api/todo", require("./routers/router"))
+
 
 
 const Port = 3000
