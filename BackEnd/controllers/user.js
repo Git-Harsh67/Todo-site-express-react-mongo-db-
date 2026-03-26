@@ -3,26 +3,26 @@ const Todo = require("../models/user")
 
 
 // create 
-exports.createTodo = async (req,res)=>{
-try {
-    const todo = new Todo({
-        title:req.body.title,
-        task:req.body.task
-    })
+exports.createTodo = async (req, res) => {
+    try {
+        const todo = new Todo({
+            title: req.body.title,
+            task: req.body.task
+        })
 
-    await todo.save()
+        await todo.save()
 
-    res.status(201).json({
-        todo
-    })
-    
-} catch (error) {
-    return error
-}
+        res.status(201).json({
+            todo
+        })
+
+    } catch (error) {
+        return error
+    }
 }
 
 //show all 
-exports.getAllTodo = async (req,res)=>{
+exports.getAllTodo = async (req, res) => {
     try {
         const todos = await Todo.find()
 
@@ -35,7 +35,7 @@ exports.getAllTodo = async (req,res)=>{
 }
 
 //delete
-exports.deleteTodo = async (req,res)=>{
+exports.deleteTodo = async (req, res) => {
     try {
 
         const todos = await Todo.findByIdAndDelete(req.params.id)
@@ -48,3 +48,14 @@ exports.deleteTodo = async (req,res)=>{
 }
 
 //update
+exports.updateTodo = async (req, res) => {
+    try {
+        const todo = await Todo.findById(req.params.id)
+        res.status(200).json({
+            todo
+        })
+
+    } catch (error) {
+        return error
+    }
+}

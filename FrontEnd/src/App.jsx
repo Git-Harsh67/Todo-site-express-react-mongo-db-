@@ -1,4 +1,4 @@
-import { allTodo, create } from "./api/index";
+import { allTodo, create, delTodo } from "./api/index";
 import "./App.css";
 import { useEffect, useState } from "react";
 
@@ -6,11 +6,11 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [titleValue, setTitleValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
+
   const data = {
     title: titleValue,
     task: taskValue,
   };
-  console.log(data);
 
   const fetchTodo = async () => {
     const savedData = await allTodo();
@@ -49,7 +49,9 @@ function App() {
               />
             </div>
             <button
-              onSubmit={create()}
+              onClick={(e) => {
+                (e.preventDefault, create(data));
+              }}
               className="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-2 rounded-lg shadow-md transition duration-200"
             >
               Add
@@ -98,7 +100,14 @@ function App() {
                     </td>
 
                     <td className="px-4 py-3.5 text-red-600 font-bold">
-                      <button>Remove</button>
+                      <button
+                        onClick={() => {
+                          delTodo(todo._id);
+                          setTodos(todos.filter(e=> e._id !== todo._id))
+                        }}
+                      >
+                        Remove
+                      </button>
                     </td>
                   </tr>
                 ))}
