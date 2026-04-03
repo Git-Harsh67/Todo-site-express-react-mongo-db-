@@ -50,9 +50,13 @@ exports.deleteTodo = async (req, res) => {
 //update
 exports.updateTodo = async (req, res) => {
     try {
-        const todo = await Todo.findById(req.params.id)
+        const todo = await Todo.findByIdAndUpdate(req.params.id , {
+            title : req.body.title,
+            task : req.body.task
+        })
+
         res.status(200).json({
-            todo
+            msg : todo
         })
 
     } catch (error) {
