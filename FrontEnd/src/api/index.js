@@ -35,17 +35,17 @@ export const delTodo = async (Id) => {
 }
 
 //update todo
-export const update = async (Id) => {
+export const update = async (Id , data) => {
 
     const response = await fetch(URL + "/edit/" + Id , {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-
         body: JSON.stringify(data)
 
     })
 
-    return res.json()
+    return response.json()
+
 }

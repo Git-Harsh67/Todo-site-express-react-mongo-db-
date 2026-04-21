@@ -1,15 +1,30 @@
 import { allTodo, create, delTodo } from "./api/index";
 import "./App.css";
+import EditCard from "./components/editCard";
 import { useEffect, useState } from "react";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [titleValue, setTitleValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
+  const [showEditById, setShowEditById] = useState(null);
+
 
   const data = {
     title: titleValue,
     task: taskValue,
+  };
+
+  const editCard = (id) => {
+    setShowEditById(id);
+    // console.log(id);
+  };
+  const toggle = (id) => {
+    if (id === showEditById) {
+      setShowEditById(null)
+    }else{
+      setShowEditById(id)
+    }
   };
 
   const fetchTodo = async () => {
@@ -19,7 +34,7 @@ function App() {
 
   useEffect(() => {
     fetchTodo();
-  }, []);
+  }, [toggle]);
 
   return (
     <>
@@ -50,7 +65,8 @@ function App() {
             </div>
             <button
               onClick={(e) => {
-                (e.preventDefault, create(data));
+                e.preventDefault; 
+                create(data);
               }}
               className="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-2 rounded-lg shadow-md transition duration-200"
             >
@@ -83,10 +99,7 @@ function App() {
 
               <tbody>
                 {todos.map((todo) => (
-                  <tr
-                    key={todo._id} // or todo.id
-                    className="border-t border-gray-100"
-                  >
+                  <tr key={todo._id} className="border-t border-gray-100">
                     <td className="px-4 py-3.5 text-gray-600 font-medium">
                       {todo.title}
                     </td>
@@ -96,14 +109,30 @@ function App() {
                     </td>
 
                     <td className="px-4 py-3.5 text-blue-600 font-bold">
-                      <button>Edit</button>
+                      <button
+                        onClick={() => {
+                          editCard(todo._id);
+                          toggle(todo._id);
+                        }}
+                      >
+                        Edit
+                      </button>
+
+                      {showEditById === todo._id && (
+                        <EditCard
+                          title={todo.title}
+                          task={todo.task}
+                          todoId={todo._id}
+                          toggle={()=> setShowEditById(null)}
+                        />
+                      )}
                     </td>
 
                     <td className="px-4 py-3.5 text-red-600 font-bold">
                       <button
                         onClick={() => {
                           delTodo(todo._id);
-                          setTodos(todos.filter(e=> e._id !== todo._id))
+                          setTodos(todos.filter((e) => e._id !== todo._id));
                         }}
                       >
                         Remove
