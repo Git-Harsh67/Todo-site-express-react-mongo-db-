@@ -16,8 +16,7 @@ app.use(cors({
 // })
 
 app.use("/api/todo", require("./routers/router"))
-
-
+app.use("/api/auth", require("./routers/auth"))
 
 const Port = 3000
 app.listen(Port , ()=>{
