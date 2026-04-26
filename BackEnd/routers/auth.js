@@ -5,4 +5,4 @@ const router = express.Router()
 router.post("/signUp" , signUp)
 
 
-module.export = router
+module.exports = router

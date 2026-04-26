@@ -1,5 +1,6 @@
 const express = require("express")
 const User = require("../models/auth")
+const bcrypt = require("bcrypt")
 
 exports.signUp = async (req, res) => {
     const {name , email , password} = req.body
@@ -10,9 +11,19 @@ exports.signUp = async (req, res) => {
         })
     }
 
+     const hashPassword = await bcrypt.hash(password , 10 ) 
+    
+    // const user = new User({
+    //     name,
+    //     email,
+    //     password
+    // })
+
+    // await user.save()
+
     res.status(201).json({
-        name,
-        email,
-        password
+        msg : "sign up completed ",
+        hashPassword
+        // user
     })
  } 
