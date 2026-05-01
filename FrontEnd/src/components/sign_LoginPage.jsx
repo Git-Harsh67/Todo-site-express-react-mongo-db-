@@ -1,13 +1,18 @@
+import { useState } from "react";
 import "../App.css";
 import Login from "./LoginForm";
 import SignUp from "./SignupForm";
 
-function Sign_LoginPage (){
-      return (
+function Sign_LoginPage() {
+  const [showLogin, setShowLogin] = useState(true);
+  const [showsignUp, setShowSignUp] = useState(false);
+
+  const changeTosignup = () => {setShowLogin(false), setShowSignUp(true)};
+  const changeToLogin = () => {setShowLogin(true), setShowSignUp(false)};
+
+  return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      
       <div className="flex w-[900px] shadow-xl rounded-2xl overflow-hidden bg-white">
-        
         {/* LEFT SIDE */}
         <div className="w-1/2 bg-blue-500 text-white flex flex-col justify-center items-center p-8">
           <img
@@ -22,12 +27,12 @@ function Sign_LoginPage (){
         </div>
 
         {/* RIGHT SIDE */}
-        <Login />
-        {/* <SignUp /> */}
-      </div>
 
+      {showsignUp === true && <SignUp toggle={changeToLogin}  />}
+        {showLogin === true && <Login toggle={ changeTosignup } />}
+      </div>
     </div>
   );
 }
 
-export default Sign_LoginPage
+export default Sign_LoginPage;

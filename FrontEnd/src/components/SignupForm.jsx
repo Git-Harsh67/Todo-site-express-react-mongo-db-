@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../App.css";
 import { signUp } from "../api/auth";
 
-function SignUp() {
+function SignUp(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,7 +10,7 @@ function SignUp() {
   const userDetails = {
     name,
     email,
-    password
+    password,
   };
 
   return (
@@ -43,12 +43,20 @@ function SignUp() {
           />
 
           <button
-            onClick={(e) => {
+            onClick={async (e) => {
               e.preventDefault();
-              signUp(userDetails);
-              setName("")
-              setEmail("")
-              setPassword("")
+              try {
+                const data = await signUp(userDetails);
+                console.log("signUp completed: "+ data)
+                setName("");
+                setEmail("");
+                setPassword("");
+
+                props.toggle()
+              } catch (error) {
+                console.log("signUp error: "+ error)
+              }
+
             }}
             className="bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition"
           >

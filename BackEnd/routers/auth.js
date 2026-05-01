@@ -3,7 +3,7 @@ const {signUp , login} = require("../controllers/auth")
 const router = express.Router()
 
 router.post("/signUp" , signUp)
-router.get("/login" , login)
+router.post("/login" , login)
 
 
 module.exports = router
