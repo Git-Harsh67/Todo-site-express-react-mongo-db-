@@ -1,19 +1,23 @@
 const URL = "http://localhost:3000/api/todo"
 
+
 // create todo
 export const create = async (data) => {
+
+    const token = localStorage.getItem("bearerToken")
 
     const response = await fetch(URL + "/create", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         },
 
         body: JSON.stringify(data)
 
     })
 
-    return res.json()
+    return response.json()
 }
 
 //get all todo 

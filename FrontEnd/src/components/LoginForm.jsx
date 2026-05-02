@@ -34,10 +34,10 @@ function Login(props) {
 
         <button
           onClick={async (e) => {
-            e.preventDefault();
+            e.preventDefault(); 
             try {
               const data = await login(userDetails);
-              console.log(data)
+              // console.log(data)
               setEmail("");
               setPassword("");
             } catch (error) {
