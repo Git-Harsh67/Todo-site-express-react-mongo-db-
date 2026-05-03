@@ -8,6 +8,10 @@ const todoDetails = new mongoose.Schema({
     task: {
         type: String,
         require: true,
+    },
+    user: {
+        type: String,
+        require: true,
     }
 
 })

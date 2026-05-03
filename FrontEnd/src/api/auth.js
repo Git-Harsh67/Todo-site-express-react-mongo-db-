@@ -15,6 +15,6 @@ export const login = async (userDetails) => {
     return (
     res.data,
     // console.log(JSON.stringify(res.data.token))
-    await localStorage.setItem( "bearerToken" , JSON.stringify(res.data.token))
+    await localStorage.setItem( "bearerToken" , res.data.token)
     )
 }

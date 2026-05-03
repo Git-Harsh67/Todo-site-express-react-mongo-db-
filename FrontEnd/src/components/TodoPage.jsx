@@ -1,6 +1,6 @@
 import { allTodo, create, delTodo } from "../api/index";
 import "../App.css";
-import EditCard from "./editCard"
+import EditCard from "./editCard";
 import { useEffect, useState } from "react";
 
 function TodoPage() {
@@ -74,9 +74,12 @@ function TodoPage() {
 
             {/* Button */}
             <button
-              onClick={(e) => {
+              onClick={async (e) => {
                 e.preventDefault();
-                create(data);
+                await create(data);
+                fetchTodo()
+                setTitleValue("");
+                setTaskValue("");
               }}
               className="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition"
             >
@@ -135,9 +138,7 @@ function TodoPage() {
                   <button
                     onClick={() => {
                       delTodo(todo._id);
-                      setTodos(
-                        todos.filter((e) => e._id !== todo._id)
-                      );
+                      setTodos(todos.filter((e) => e._id !== todo._id));
                     }}
                     className="text-red-600 hover:text-red-800 font-semibold"
                   >
@@ -153,4 +154,4 @@ function TodoPage() {
   );
 }
 
-export default TodoPage
+export default TodoPage;

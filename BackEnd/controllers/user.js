@@ -5,11 +5,6 @@ const Todo = require("../models/user")
 // create 
 exports.createTodo = async (req, res) => {
     try {
-        const bearerHeader = req.headers["authorization"];
-        const token = bearerHeader.split(" ")[1];
-
-        const verifyToken = jwt.verify(token , process.env.JWT_PASSWORD)
-        const id = verifyToken.id
         const todo = new Todo({
             title: req.body.title,
             task: req.body.task
