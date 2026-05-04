@@ -1,4 +1,4 @@
-import { allTodo, create, delTodo } from "../api/index";
+import { allTodo, create, delTodo , userTodo } from "../api/index";
 import "../App.css";
 import EditCard from "./editCard";
 import { useEffect, useState } from "react";
@@ -27,7 +27,8 @@ function TodoPage() {
   };
 
   const fetchTodo = async () => {
-    const savedData = await allTodo();
+    const savedData = await userTodo();
+    console.log(savedData)
     setTodos(savedData);
   };
 

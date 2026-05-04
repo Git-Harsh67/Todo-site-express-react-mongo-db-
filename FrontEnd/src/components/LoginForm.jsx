@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../App.css";
 import { login } from "../api/auth";
 
-function Login(props) {
+function Login(props ) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -40,6 +40,7 @@ function Login(props) {
               // console.log(data)
               setEmail("");
               setPassword("");
+              props.switchToTodo()
             } catch (error) {
               console.log("login error")
             }

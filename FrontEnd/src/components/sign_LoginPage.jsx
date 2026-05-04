@@ -3,12 +3,16 @@ import "../App.css";
 import Login from "./LoginForm";
 import SignUp from "./SignupForm";
 
-function Sign_LoginPage() {
+function Sign_LoginPage(props ) {
   const [showLogin, setShowLogin] = useState(true);
   const [showsignUp, setShowSignUp] = useState(false);
 
-  const changeTosignup = () => {setShowLogin(false), setShowSignUp(true)};
-  const changeToLogin = () => {setShowLogin(true), setShowSignUp(false)};
+  const changeTosignup = () => {
+    (setShowLogin(false), setShowSignUp(true));
+  };
+  const changeToLogin = () => {
+    (setShowLogin(true), setShowSignUp(false));
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -28,8 +32,8 @@ function Sign_LoginPage() {
 
         {/* RIGHT SIDE */}
 
-      {showsignUp === true && <SignUp toggle={changeToLogin}  />}
-        {showLogin === true && <Login toggle={ changeTosignup } />}
+        {showsignUp === true && <SignUp toggle={changeToLogin} />}
+        {showLogin === true && <Login toggle={changeTosignup} switchToTodo = {props.switchToTodo} />}
       </div>
     </div>
   );
