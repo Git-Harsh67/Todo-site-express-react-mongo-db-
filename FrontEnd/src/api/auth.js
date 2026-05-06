@@ -11,10 +11,9 @@ export const signUp = async (userDetails) => {
 //login
 
 export const login = async (userDetails) => {
-    const res = await axios.post(`${baseURL}/login` , userDetails)
-    return (
-    res.data,
+    const res = await axios.post(`${baseURL}/login` , userDetails);
+    await localStorage.setItem( "bearerToken" , res.data.token);
+    return res.data;
     // console.log(JSON.stringify(res.data.token))
-    await localStorage.setItem( "bearerToken" , res.data.token)
-    )
+    
 }

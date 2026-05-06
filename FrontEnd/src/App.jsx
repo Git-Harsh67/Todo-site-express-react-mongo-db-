@@ -7,19 +7,24 @@ import TodoPage from "./components/TodoPage.jsx";
 
 function App() {
 
-  const[todoPage , setTodoPage]= useState(false)
-  const[authPage , setAuthPage]= useState(true)
+  const[todoPage , setTodoPage]= useState(true)
+  const[authPage , setAuthPage]= useState(false)
 
   const switchToTodo = () =>{
     setTodoPage(true)
     setAuthPage(false)
   }
+    const switchToLogin = () =>{
+    setTodoPage(false)
+    setAuthPage(true)
+  }
 
   return (
 <>
-{authPage === true && <Sign_LoginPage switchToTodo = {switchToTodo} /> } 
+{authPage === true && <Sign_LoginPage ToAuthPage = {switchToTodo} /> } 
 
-{todoPage === true && <TodoPage /> }
+
+{todoPage === true && <TodoPage toLogin = {switchToLogin} /> }
 
 </>
   );

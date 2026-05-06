@@ -47,7 +47,7 @@ function SignUp(props) {
               e.preventDefault();
               try {
                 const data = await signUp(userDetails);
-                console.log("signUp completed: "+ data)
+                // console.log("signUp completed: "+ data)
                 setName("");
                 setEmail("");
                 setPassword("");

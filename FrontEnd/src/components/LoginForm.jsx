@@ -2,14 +2,18 @@ import { useState } from "react";
 import "../App.css";
 import { login } from "../api/auth";
 
-function Login(props ) {
+function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // console.log("inside login :" , props.toTodo())
 
   const userDetails = {
     email,
     password,
   };
+
+  // console.log(userDetails )
 
   return (
     <div className="w-1/2 p-8 flex flex-col justify-center">
@@ -34,17 +38,16 @@ function Login(props ) {
 
         <button
           onClick={async (e) => {
-            e.preventDefault(); 
             try {
+              e.preventDefault();
               const data = await login(userDetails);
-              // console.log(data)
+              console.log("login :" + data);
               setEmail("");
               setPassword("");
-              props.switchToTodo()
+              props.toTodo()
             } catch (error) {
-              console.log("login error")
+              (console.log("login error"), console.log(error));
             }
-
           }}
           className="bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition"
         >
@@ -57,7 +60,10 @@ function Login(props ) {
         Don’t have an account?
       </p>
 
-      <button onClick={()=> props.toggle() } className="mt-2 border border-blue-500 text-blue-500 py-2 rounded-lg hover:bg-blue-50 transition">
+      <button
+        onClick={() => props.toggle()}
+        className="mt-2 border border-blue-500 text-blue-500 py-2 rounded-lg hover:bg-blue-50 transition"
+      >
         Sign Up
       </button>
     </div>

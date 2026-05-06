@@ -38,14 +38,14 @@ exports.getAllTodo = async (req, res) => {
 exports.userTodo = async (req, res) => {
     try {
         const todos = await Todo.find({user : req.user.id} )
-        console.log(todos)
+        // console.log(todos)
         if (!todos) {
             return res.status(200).json({
                 msg: "todo not found"
             })
         }
         res.status(200).json({
-            msg: todos
+             todos
         })
     } catch (error) {
         res.status(500).json({

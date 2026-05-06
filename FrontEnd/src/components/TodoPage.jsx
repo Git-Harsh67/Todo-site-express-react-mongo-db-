@@ -1,9 +1,9 @@
-import { allTodo, create, delTodo , userTodo } from "../api/index";
+import { allTodo, create, delTodo, userTodo } from "../api/index";
 import "../App.css";
 import EditCard from "./editCard";
 import { useEffect, useState } from "react";
 
-function TodoPage() {
+function TodoPage(props) {
   const [todos, setTodos] = useState([]);
   const [titleValue, setTitleValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
@@ -28,9 +28,10 @@ function TodoPage() {
 
   const fetchTodo = async () => {
     const savedData = await userTodo();
-    console.log(savedData)
+    // console.log(savedData);
     setTodos(savedData);
   };
+
 
   useEffect(() => {
     fetchTodo();
@@ -42,6 +43,14 @@ function TodoPage() {
       <h1 className="text-center text-4xl font-bold text-gray-800 mb-8">
         Todo App
       </h1>
+      <button
+        onClick={() => {
+          props.toLogin();
+        }}
+        className="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition"
+      >
+        logout
+      </button>
 
       {/* Form Card */}
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6 mb-10">
@@ -78,7 +87,7 @@ function TodoPage() {
               onClick={async (e) => {
                 e.preventDefault();
                 await create(data);
-                fetchTodo()
+                fetchTodo();
                 setTitleValue("");
                 setTaskValue("");
               }}

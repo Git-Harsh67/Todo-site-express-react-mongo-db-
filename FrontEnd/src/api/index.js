@@ -32,7 +32,7 @@ export const allTodo = async () => {
 export const userTodo = async () => {
 
     const token = localStorage.getItem("bearerToken")
-    
+
     const response = await fetch(URL + "/userTodo", {
         method: "GET",
         headers: {

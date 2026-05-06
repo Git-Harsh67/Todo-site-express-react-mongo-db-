@@ -3,10 +3,11 @@ import "../App.css";
 import Login from "./LoginForm";
 import SignUp from "./SignupForm";
 
-function Sign_LoginPage(props ) {
+function Sign_LoginPage(props) {
   const [showLogin, setShowLogin] = useState(true);
   const [showsignUp, setShowSignUp] = useState(false);
 
+  console.log(props.ToAuthPage);
   const changeTosignup = () => {
     (setShowLogin(false), setShowSignUp(true));
   };
@@ -33,7 +34,8 @@ function Sign_LoginPage(props ) {
         {/* RIGHT SIDE */}
 
         {showsignUp === true && <SignUp toggle={changeToLogin} />}
-        {showLogin === true && <Login toggle={changeTosignup} switchToTodo = {props.switchToTodo} />}
+        {showLogin === true && <Login toggle={changeTosignup} toTodo = {props.ToAuthPage} />}
+
       </div>
     </div>
   );
