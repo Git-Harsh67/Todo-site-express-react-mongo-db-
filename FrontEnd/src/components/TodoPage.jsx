@@ -2,6 +2,7 @@ import { allTodo, create, delTodo, userTodo } from "../api/index";
 import "../App.css";
 import EditCard from "./editCard";
 import { useEffect, useState } from "react";
+import React from "react";
 
 function TodoPage(props) {
   const [todos, setTodos] = useState([]);

@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../App.css";
 import Login from "./LoginForm";
 import SignUp from "./SignupForm";
+import React from "react";
 
 function Sign_LoginPage(props) {
   const [showLogin, setShowLogin] = useState(true);
