@@ -7,8 +7,8 @@ import TodoPage from "./components/TodoPage.jsx";
 
 function App() {
 
-  const[todoPage , setTodoPage]= useState(true)
-  const[authPage , setAuthPage]= useState(false)
+  const[todoPage , setTodoPage]= useState(false)
+  const[authPage , setAuthPage]= useState(true)
 
   const switchToTodo = () =>{
     setTodoPage(true)

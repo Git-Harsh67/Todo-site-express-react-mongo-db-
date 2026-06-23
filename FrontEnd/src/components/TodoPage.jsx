@@ -32,25 +32,30 @@ function TodoPage(props) {
     setTodos(savedData);
   };
 
-
   useEffect(() => {
     fetchTodo();
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-6">
+
       {/* Header */}
-      <h1 className="text-center text-4xl font-bold text-gray-800 mb-8">
-        Todo App
-      </h1>
-      <button
-        onClick={() => {
-          props.toLogin();
-        }}
-        className="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition"
-      >
-        logout
-      </button>
+
+      <div className="grid grid-cols-6 gap-4 mb-10 mt-4">
+
+        <h1 className="text-center text-4xl font-bold text-gray-800 col-span-4 col-start-2">
+          Todo App
+        </h1>
+
+        <button
+          onClick={() => {
+            props.toLogin();
+          }}
+          className=" bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition col-span-1 col-end-7 "
+        >
+          logout
+        </button>
+      </div>
 
       {/* Form Card */}
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6 mb-10">
