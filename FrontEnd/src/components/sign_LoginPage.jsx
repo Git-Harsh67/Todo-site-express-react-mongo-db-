@@ -18,11 +18,11 @@ function Sign_LoginPage(props) {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="flex w-900px shadow-xl rounded-2xl overflow-hidden bg-white">
+      <div className="flex w-[900px] shadow-xl rounded-2xl overflow-hidden bg-white">
         {/* LEFT SIDE */}
         <div className="w-1/2 bg-blue-500 text-white flex flex-col justify-center items-center p-8">
           <img
-            src="../src/imgs/clipboard.png"
+            src="/clipboard.png"
             alt="todo"
             className="w-30 mb-6"
           />
