@@ -19,6 +19,7 @@ function Login(props) {
   return (
     <div className="w-1/2 p-8 flex flex-col justify-center">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Login</h2>
+      <h1 className="bg-red-500 text-white text-5xl p-4">Tailwind Test</h1>
 
       {/* LOGIN FORM */}
       <div className="flex flex-col gap-4">
@@ -45,7 +46,7 @@ function Login(props) {
               console.log("login :" + data);
               setEmail("");
               setPassword("");
-              props.toTodo()
+              props.toTodo();
             } catch (error) {
               (console.log("login error"), console.log(error));
             }
