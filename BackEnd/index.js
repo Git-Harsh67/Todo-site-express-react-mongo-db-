@@ -8,7 +8,7 @@ const app = express()
 dataBase()
 app.use(express.json())
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'https://todo-frontend-dk35.onrender.com'
 }))
 
 // app.get("/api/todo",(req,res)=>{
