@@ -1,4 +1,4 @@
-const URL = "http://localhost:3000/api/todo"
+const URL = "https://todo-backend-7p06.onrender.com/api/todo"
 
 
 // create todo
