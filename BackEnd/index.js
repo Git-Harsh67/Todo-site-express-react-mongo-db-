@@ -18,10 +18,6 @@ app.use(cors({
 //     res.send("hello")
 // })
 
-app.get("/", (req, res) => {
-    res.send("Todo backend is running");
-});
-
 app.use("/api/todo", require("./routers/router"))
 app.use("/api/auth", require("./routers/auth"))
 
