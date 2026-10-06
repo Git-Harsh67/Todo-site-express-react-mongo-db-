@@ -1,4 +1,3 @@
-const express = require("express")
 const User = require("../models/auth")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
@@ -8,39 +7,38 @@ exports.signUp = async (req, res) => {
         const { name, email, password } = req.body
 
         if (!name || !email || !password) {
-            res.status(422).json({
+            return res.status(422).json({
                 msg: "all fields required"
             })
         }
 
         const checkExist = await User.findOne({ email })
 
-        if (!checkExist) {
-
-            const hashPassword = await bcrypt.hash(password, 10)
-
-            const user = new User({
-                name,
-                email,
-                password: hashPassword
+        if (checkExist) {
+            return res.json({
+                msg: "email already exist"
             })
-
-            await user.save()
-
-            res.status(201).json({
-                msg: "sign up completed ",
-                user
-            })
-
         }
 
-        res.json({
-            msg: "email already exist"
+        const hashPassword = await bcrypt.hash(password, 10)
+
+        const user = new User({
+            name,
+            email,
+            password: hashPassword
         })
+
+        await user.save()
+
+        return res.status(201).json({
+            msg: "sign up completed ",
+            user
+        })
+
 
     }
     catch (error) {
-        res.status(404).json({
+        return res.status(400).json({
             msg: "something wrong in signUp ",
             error
         })
