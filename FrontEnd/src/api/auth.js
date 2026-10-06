@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseURL = "https://todo-backend-7p06.onrender.com/api/auth"
+const baseURL = "https://todo-site-express-react-mongo-db.onrender.com"
 
 //signUp
 export const signUp = async (userDetails) => {

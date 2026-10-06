@@ -28,10 +28,9 @@ const verifyToken = (req, res, next) => {
         }
 
         const decode = jwt.verify(token, process.env.JWT_PASSWORD)
-        // console.log(decode)
+
         if (decode) {
             req.user = decode
-            // console.log(req.user)
             return next()
 
         }

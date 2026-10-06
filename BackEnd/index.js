@@ -10,13 +10,9 @@ app.use(express.json())
 app.use(cors({
   origin:  [
         "http://localhost:5173",
-        "https://todo-frontend-dk35.onrender.com"
+        "https://frontend-wshn.onrender.com"
     ]
 }))
-
-// app.get("/api/todo",(req,res)=>{
-//     res.send("hello")
-// })
 
 app.use("/api/todo", require("./routers/router"))
 app.use("/api/auth", require("./routers/auth"))
