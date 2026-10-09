@@ -1,4 +1,4 @@
-const URL = "https://todo-site-express-react-mongo-db.onrender.com"
+const URL = "https://todo-site-express-react-mongo-db.onrender.com/api/todo"
 
 
 // create todo

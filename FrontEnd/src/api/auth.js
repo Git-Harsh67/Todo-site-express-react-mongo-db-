@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseURL = "https://todo-site-express-react-mongo-db.onrender.com"
+const baseURL = "https://todo-site-express-react-mongo-db.onrender.com/api/auth"
 
 //signUp
 export const signUp = async (userDetails) => {
@@ -14,6 +14,4 @@ export const login = async (userDetails) => {
     const res = await axios.post(`${baseURL}/login` , userDetails);
     await localStorage.setItem( "bearerToken" , res.data.token);
     return res.data;
-    // console.log(JSON.stringify(res.data.token))
-    
 }
